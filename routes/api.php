@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\CategoryController as UserCategoryController;
 use App\Http\Controllers\User\ProductController as UserProductController;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ Route::post('product/price/filter', [UserProductController::class, 'priceFilter'
 Route::post('product/serach', [UserProductController::class, 'search']);
  
 /** authorize user */
-Route::group(['prefix' => 'user'], function () {
+Route::group(['middleware' =>  'userPermission', 'prefix' => 'user'], function () {
+    Route::post('order/store', [OrderController::class, 'store']);
 });
 
 
