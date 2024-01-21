@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
     /* Update the specified resource in storage */
     public function update(Request $request, string $id)
-    {
+    {   
         try {
             $data = CategoryService::update($id, $request);
             return $this->HttpSuccessResponse("Category update successfully....!", $data, 201);

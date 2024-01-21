@@ -50,7 +50,7 @@ class ProductController extends Controller
  
     /* Update the specified resource in storage */
     public function update(Request $request, string $id)
-    {
+    {   
         try {
             $data = ProductService::update($id, $request);
             return $this->HttpSuccessResponse("Product update successfull", $data, 201);

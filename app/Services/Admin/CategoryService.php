@@ -32,7 +32,7 @@ class CategoryService
     /* specific reosurce show */
     public static function findById($id)
     {
-        return Category::with('parent')->find($id);
+        return Category::find($id);
     }
 
     /* specific resource with field */
@@ -51,7 +51,7 @@ class CategoryService
     /* find by id by Delete */
     public static function findByIdDeleteChecker($id)
     {
-        return Category::where('parent_id', $id)->first();   
+        return Category::where('parent_id', $id)->first();
     }
 
     /* published or unpublished */

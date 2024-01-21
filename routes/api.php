@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\OrderController;
@@ -40,11 +41,12 @@ Route::group(['middleware' =>  'adminPermission', 'prefix' => 'admin'], function
     Route::resource('category', CategoryController::class)->only([
         'index', 'store', 'show', 'update', 'destroy',
     ]);
-    
-    
+
     Route::resource('product', ProductController::class)->only([
         'index', 'store', 'show', 'update', 'destroy',
     ]);
-    Route::get('/product/status/{id}', [ProductController::class, 'status']);
 
+    Route::resource('designation', DesignationController::class)->only([
+        'index', 'store', 'show', 'update', 'destroy',
+    ]);
 });
