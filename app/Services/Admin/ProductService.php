@@ -20,12 +20,14 @@ class ProductService
         if ($request->image) {
             $path = 'images/product/';
             $db_field_name = 'image';
-            $image =  ImageUpload::Image($request, $path, $db_field_name);
+            $imageUpload =  ImageUpload::Image($request, $path, $db_field_name);
+        }else{
+            $imageUpload = $image;
         }
         return array(
             'title' => $request->title,
             'slug' => $request->title,
-            'image' => $image,
+            'image' => $imageUpload,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'body' => $request->body,
@@ -52,7 +54,7 @@ class ProductService
     }
 
     /* specific reosurces update */
-    public static function update($id, $request)
+    public static function update($request, $id)
     {   
         $product = ProductService::findById($id);
         return $product->update(ProductService::storeDocument($request, $product->image));

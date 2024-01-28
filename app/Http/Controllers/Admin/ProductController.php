@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {   
         try {
-            $data = ProductService::update($id, $request);
+            $data = ProductService::update($request, $id);
             return $this->HttpSuccessResponse("Product update successfull", $data, 201);
         } catch (\Throwable $th) {
             throw $th;
