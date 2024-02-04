@@ -16,6 +16,6 @@ class CategoryService
     /** category has assing product */
     public static function CategoryHasAssign($id)
     {
-        return Product::where('status', 1)->where('category_id', $id)->select(['product_id', 'title', 'category_id', 'size', 'price', 'image', 'status'])->paginate(10);
+        return Product::with('category')->where('category_id', $id)->select(['product_id', 'title', 'category_id', 'price', 'image', 'status'])->get();
     }
 }

@@ -9,7 +9,7 @@ class ProductService
     /* find all resource */
     public static function findAll()
     {
-        return Product::with('category')->latest()->select(['product_id', 'title', 'category_id', 'size', 'price', 'image', 'status'])->paginate(10);
+        return Product::with('category')->latest()->select(['product_id', 'title', 'category_id', 'price', 'image', 'status'])->get();
     }
 
     /* specific reosurces show */

@@ -11,7 +11,7 @@ use App\Http\Controllers\User\CategoryController as UserCategoryController;
 use App\Http\Controllers\User\ProductController as UserProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+ 
 /* API Routes */
 Route::post('login', [UserAuthController::class, 'login']);
 Route::post('register', [UserAuthController::class, 'register']);
