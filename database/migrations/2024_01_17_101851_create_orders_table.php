@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->string('user_id');
             $table->text('location');
             $table->longText('note')->nullable();
             $table->tinyInteger('status')->default(1);

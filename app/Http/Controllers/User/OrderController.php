@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Traits\HttpResponseTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -20,6 +21,7 @@ class OrderController extends Controller
 
             $order = new Order();
             $order->name = $request->name;
+            $order->user_id = Auth::id();
             $order->email = $request->email;
             $order->phone = $request->phone;
             $order->note = $request->note;
