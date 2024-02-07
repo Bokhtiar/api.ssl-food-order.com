@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\CategoryController as UserCategoryController;
+use App\Http\Controllers\User\DesignationController as UserDesignationController;
+use App\Http\Controllers\User\FloorController as UserFloorController;
 use App\Http\Controllers\User\ProductController as UserProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +30,13 @@ Route::get('category/product/{id}', [UserCategoryController::class, 'categoryAss
 /** filter search */
 Route::post('product/price/filter', [UserProductController::class, 'priceFilter']);
 Route::post('product/serach', [UserProductController::class, 'search']);
- 
+
+/** floor */
+Route::get('floor', [UserFloorController::class, 'index']);
+
+/** designation */
+Route::get('designation', [UserDesignationController::class, 'index']);
+
 /** authorize user */
 Route::group(['middleware' =>  'userPermission', 'prefix' => 'user'], function () {
     Route::post('order/store', [OrderController::class, 'store']);
